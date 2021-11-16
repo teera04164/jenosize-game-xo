@@ -45,6 +45,7 @@ function Game() {
         const newBlock = [...blocks]
         newBlock[position] = 'X'
         setBlocks(newBlock)
+        setMessage('NEXT TURN: O')
         const resultClick = await api.markPosition(gameId, { position })
         if (resultClick) {
             setStateFromResponse(resultClick)
