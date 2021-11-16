@@ -42,7 +42,7 @@ function Game() {
     }
 
     const handleClickBlock = async (position) => {
-        const newBlock = [...board]
+        const newBlock = [...blocks]
         newBlock[position] = 'X'
         setBlocks(newBlock)
         const resultClick = await api.markPosition(gameId, { position })
