@@ -22,14 +22,20 @@ function Game() {
             const response = await api.getGameById(localGameId)
             if (response) {
                 setStateFromResponse(response)
+            } else {
+                createNewGameId()
             }
         } else {
-            const response = await api.initial()
-            if (response) {
-                const { game_id } = response
-                localStorage.setItem('gameId', game_id);
-                setStateFromResponse(response)
-            }
+            createNewGameId()
+        }
+    }
+
+    const createNewGameId = async () => {
+        const response = await api.initial()
+        if (response) {
+            const { game_id } = response
+            localStorage.setItem('gameId', game_id);
+            setStateFromResponse(response)
         }
     }
 
